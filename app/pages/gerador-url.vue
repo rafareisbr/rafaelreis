@@ -19,19 +19,20 @@ async function copyUrl() {
 </script>
 
 <template>
-  <div class="min-h-screen bg-gray-50 flex items-center justify-center p-4">
-    <div class="bg-white rounded-2xl shadow-sm border border-gray-200 w-full max-w-md p-8">
-      <h1 class="text-2xl font-semibold text-gray-800 mb-1">Gerador de link WhatsApp</h1>
-      <p class="text-sm text-gray-500 mb-6">Para usar como link no Instagram</p>
+  <div class="min-h-screen bg-gray-50 flex flex-col p-4 md:items-center md:justify-center">
+    <div class="bg-white rounded-2xl shadow-sm border border-gray-200 w-full md:max-w-md p-6">
+      <h1 class="text-xl font-semibold text-gray-800 mb-0.5">Gerador de link WhatsApp</h1>
+      <p class="text-sm text-gray-500 mb-5">Para usar como link no Instagram</p>
 
-      <div class="flex flex-col gap-4">
+      <div class="flex flex-col gap-5">
         <div>
           <label class="block text-sm font-medium text-gray-700 mb-1">Número com DDD e código do país</label>
           <input
             v-model="phone"
             type="tel"
+            inputmode="numeric"
             placeholder="5511999999999"
-            class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+            class="w-full border border-gray-300 rounded-xl px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
           />
           <p class="text-xs text-gray-400 mt-1">Só números. Ex: 55 + DDD + número</p>
         </div>
@@ -40,13 +41,13 @@ async function copyUrl() {
           <label class="block text-sm font-medium text-gray-700 mb-1">Mensagem pré-definida <span class="text-gray-400 font-normal">(opcional)</span></label>
           <textarea
             v-model="message"
-            rows="3"
+            rows="4"
             placeholder="Olá! Vim pelo Instagram..."
-            class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent resize-none"
+            class="w-full border border-gray-300 rounded-xl px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent resize-none"
           />
         </div>
 
-        <div v-if="generatedUrl" class="bg-gray-50 border border-gray-200 rounded-lg p-3">
+        <div v-if="generatedUrl" class="bg-gray-50 border border-gray-200 rounded-xl p-3">
           <p class="text-xs text-gray-500 mb-1 font-medium">Link gerado</p>
           <p class="text-sm text-gray-700 break-all">{{ generatedUrl }}</p>
         </div>
@@ -54,7 +55,7 @@ async function copyUrl() {
         <button
           :disabled="!generatedUrl"
           @click="copyUrl"
-          class="w-full bg-green-500 hover:bg-green-600 disabled:bg-gray-200 disabled:text-gray-400 disabled:cursor-not-allowed text-white font-medium rounded-lg py-2.5 text-sm transition-colors"
+          class="w-full bg-green-500 hover:bg-green-600 disabled:bg-gray-200 disabled:text-gray-400 disabled:cursor-not-allowed text-white font-semibold rounded-xl py-3.5 text-base transition-colors"
         >
           {{ copied ? 'Copiado!' : 'Copiar link' }}
         </button>

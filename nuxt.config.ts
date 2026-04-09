@@ -2,8 +2,8 @@
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: false },
-  modules: [
-    '@nuxtjs/tailwindcss',
-    '@nuxt/devtools',
-  ]
+  modules: ['@nuxtjs/tailwindcss', '@nuxt/devtools', 'nuxt-gtag'],
+  gtag: {
+    id: process.env.NUXT_PUBLIC_GTAG_ID,
+  },
 })
